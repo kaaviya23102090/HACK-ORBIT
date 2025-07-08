@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Career Path Recommender</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="auth-container">
+    <h2>Student Login / Register</h2>
+    <input type="text" id="username" placeholder="Enter Username" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Register</button>
+  </div>
+
+  <div class="container" id="form-container" style="display: none;">
+    <h2>Enter Your Details</h2>
+    <form id="detailsForm">
+      <label>Place:</label>
+      <select id="place" required>
+        <option value="rural">Rural</option>
+        <option value="urban">Urban</option>
+      </select>
+
+      <label>Group Chosen in 11th:</label>
+      <select id="group" required>
+        <option value="biology">Biology</option>
+        <option value="computer science">Computer Science</option>
+        <option value="commerce">Commerce</option>
+        <option value="vocational">Vocational</option>
+      </select>
+
+      <label>Marks in 11th (%):</label>
+      <input type="number" id="marks11" min="0" max="100" required>
+
+      <label>Marks in 12th (%):</label>
+      <input type="number" id="marks12" min="0" max="100" required>
+
+      <label>Family Income Level:</label>
+      <select id="income" required>
+        <option value="">--Select--</option>
+        <option value="low">Low Income</option>
+        <option value="middle">Middle Income</option>
+      </select>
+
+      <label>Are you willing to join Engineering?</label>
+      <select id="engineeringChoice" onchange="toggleCutoff()" required>
+        <option value="">--Select--</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+
+      <div id="cutoffSection" style="display: none;">
+        <label>Enter Engineering Cutoff (out of 200):</label>
+        <input type="number" id="cutoff" min="0" max="200">
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="output" class="result"></div>
+
+    <!-- 🎤 Mentor Query Section -->
+    <div class="mentor-chat">
+      <h3>Ask the Mentor</h3>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" id="queryInput" placeholder="Type or speak your question..." style="flex: 1;" />
+        <button onclick="startVoice()" title="Speak your question">🎤</button>
+      </div>
+      <button onclick="askMentor()">Ask</button>
+      <div id="mentorReply" class="reply-box"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
